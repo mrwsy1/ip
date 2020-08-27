@@ -13,15 +13,15 @@ public class Task {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
 
-    public void markAsDone(){
+    public void markAsDone() {
         this.isDone = true;
     }
 
-    public static int getNumTask(){
+    public static int getNumTask() {
         return numTask;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
