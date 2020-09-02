@@ -14,21 +14,25 @@ public class Duke {
         Task[] array = new Task[100];
         String line;
         Scanner in = new Scanner(System.in);
+        boolean looper = true;
 
-        while(true) {
+        while(looper) {
             line = in.nextLine();
-            //exit command
-            if (line.equalsIgnoreCase("bye")) {
+            String lineCmd = line.trim().split(" ")[0];
+            switch(lineCmd){
+            case "bye":
                 System.out.println("Bye. Hope to see you again soon!");
+                looper = false;
                 break;
-            } else if (line.equalsIgnoreCase("list")) { //list command
+            case "list":
                 if (Task.getNumTask()==0) {
                     System.out.println("No tasks recorded.");
                 } else {
                     System.out.println("Here are the tasks in your list:");
                     displayList(array);
                 }
-            } else if (line.trim().toLowerCase().startsWith("done ")) { //done command
+                break;
+            case "done":
                 String taskIndexStr = line.trim().substring(5);
                 int taskIndex = Integer.parseInt(taskIndexStr);
                 if (taskIndex==0 || taskIndex>Task.getNumTask()) {
@@ -38,23 +42,46 @@ public class Duke {
                 } else {
                     array[taskIndex-1].markAsDone();
                     System.out.println("Nice! I've marked this task as done:");
-                    System.out.println("[" + array[taskIndex-1].getStatusIcon()
-                            + "] " + array[taskIndex-1].getDescription());
+                    System.out.println(array[taskIndex-1].toString());
                 }
-            } else { //add command
-                Task newTask = new Task(line);
-                array[Task.getNumTask()-1] = newTask;
-                System.out.println("added: " + line);
+                break;
+            case "todo":
+                String todoContent = line.trim().substring(5);
+                Todo newTodo = new Todo(todoContent);
+                array[Task.getNumTask()-1] = newTodo;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("\t[T][\u2718] " + todoContent);
+                System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
+                break;
+            case "deadline":
+                int byPos = line.indexOf("/by");
+                String dlContent = line.trim().substring(9, byPos-1);
+                String dlBy = line.trim().split("/by ")[1];
+                Deadline newDeadline = new Deadline(dlContent, dlBy);
+                array[Task.getNumTask()-1] = newDeadline;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("\t[D][\u2718] " + dlContent + " (by: " + dlBy + ")");
+                System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
+                break;
+            case "event":
+                int atPos = line.indexOf("/at");
+                String eventContent = line.trim().substring(6, atPos-1);
+                String eventAt = line.trim().split("/at ")[1];
+                Event newEvent = new Event(eventContent, eventAt);
+                array[Task.getNumTask()-1] = newEvent;
+                System.out.println("Got it. I've added this task:");
+                System.out.println("\t[E][\u2718] " + eventContent + " (at: " + eventAt + ")");
+                System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
+                break;
+            default:
+                System.out.println("Invalid command.");
             }
         } //end while loop
     } //end of main
 
     public static void displayList(Task[] array) {
         for (int i=0; i<Task.getNumTask(); i++) {
-            System.out.println(i+1 + ". [" + array[i].getStatusIcon()
-                    + "] " + array[i].getDescription());
+            System.out.println(i+1 + "." + array[i].toString());
         }
     } //end of displayList
 }
-//done 2
-//012345

@@ -1,3 +1,8 @@
+/* how to use:
+ * Task t = new Task("read book");
+ * t.markAsDone()
+ */
+
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -25,8 +30,7 @@ public class Task {
         return description;
     }
 
-    /* how to use:
-    Task t = new Task("read book");
-    t.markAsDone()
-    */
+    public String toString(){
+        return "[" + getStatusIcon() + "] " + getDescription();
+    }
 }
