@@ -1,0 +1,10 @@
+testing
+todo some task1
+deadline some task2 /by tuesday
+event some task3 /at sunday night
+list
+done 1
+done 2
+done 3
+list
+bye
