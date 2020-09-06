@@ -23,11 +23,11 @@ Here are the tasks in your list:
 2.[D][✘] some task2 (by: tuesday)
 3.[E][✘] some task3 (at: sunday night)
 Nice! I've marked this task as done:
-    [T][✓] some task1
+	[T][✓] some task1
 Nice! I've marked this task as done:
-    [D][✓] some task2 (by: tuesday)
+	[D][✓] some task2 (by: tuesday)
 Nice! I've marked this task as done:
-    [E][✓] some task3 (at: sunday night)
+	[E][✓] some task3 (at: sunday night)
 Here are the tasks in your list:
 1.[T][✓] some task1
 2.[D][✓] some task2 (by: tuesday)
