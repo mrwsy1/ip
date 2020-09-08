@@ -9,12 +9,17 @@ Hello! I'm Duke
 What can I do for you?
 
 Invalid command.
+Please enter a valid task.
 Got it. I've added this task:
 	[T][✘] some task1
 Now you have 1 tasks in the list.
+Please enter a valid deadline.
+Please enter a valid deadline.
 Got it. I've added this task:
 	[D][✘] some task2 (by: tuesday)
 Now you have 2 tasks in the list.
+Please enter a valid event.
+Please enter a valid event.
 Got it. I've added this task:
 	[E][✘] some task3 (at: sunday night)
 Now you have 3 tasks in the list.
@@ -22,14 +27,12 @@ Here are the tasks in your list:
 1.[T][✘] some task1
 2.[D][✘] some task2 (by: tuesday)
 3.[E][✘] some task3 (at: sunday night)
+Invalid input.
+Please input an index within range (1~3).
 Nice! I've marked this task as done:
 	[T][✓] some task1
-Nice! I've marked this task as done:
-	[D][✓] some task2 (by: tuesday)
-Nice! I've marked this task as done:
-	[E][✓] some task3 (at: sunday night)
 Here are the tasks in your list:
 1.[T][✓] some task1
-2.[D][✓] some task2 (by: tuesday)
-3.[E][✓] some task3 (at: sunday night)
+2.[D][✘] some task2 (by: tuesday)
+3.[E][✘] some task3 (at: sunday night)
 Bye. Hope to see you again soon!

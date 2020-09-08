@@ -1,10 +1,15 @@
 testing
+todo
 todo some task1
+deadline
+deadline some task2
 deadline some task2 /by tuesday
+event
+event some task3
 event some task3 /at sunday night
 list
+done
+done 4
 done 1
-done 2
-done 3
 list
 bye
