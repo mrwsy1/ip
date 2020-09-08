@@ -1,3 +1,5 @@
+package duke;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -95,7 +97,7 @@ public class Duke {
                 System.out.println("Please input an index within range (1~"
                         + Task.getNumTask() + ").");
             } else if (array[taskIndex-1].isDone) {
-                System.out.println("Task is already done.");
+                System.out.println("duke.Task is already done.");
             } else {
                 array[taskIndex-1].markAsDone();
                 System.out.println("Nice! I've marked this task as done:");
@@ -129,7 +131,7 @@ public class Duke {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
-        System.out.println("Hello! I'm Duke\n" +
+        System.out.println("Hello! I'm duke.Duke\n" +
                 "What can I do for you?\n");
     }
 
