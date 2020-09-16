@@ -60,7 +60,7 @@ public class Duke {
     public static void readFile() {
         try {
             File f = new File("data/tasks.txt");
-            if (!f.exists()){
+            if (!f.exists()) {
                 f.getParentFile().mkdir();
                 f.createNewFile();
             }
@@ -74,7 +74,7 @@ public class Duke {
                  * 2: contents
                  * 3: conditions
                  * */
-                switch(linefSplit[0]){
+                switch (linefSplit[0]) {
                 case "T":
                     Todo newTodo = new Todo(linefSplit[2]);
                     newTodo.isDone = Boolean.parseBoolean(linefSplit[1]);
@@ -98,9 +98,9 @@ public class Duke {
     }
 
     /* method to overwrite the file with all tasks in the array */
-    public static void writeWholeFile () throws IOException {
+    public static void writeWholeFile() throws IOException {
         FileWriter fw = new FileWriter("data/tasks.txt");
-        for (int i=0; i<array.size(); i++) {
+        for (int i = 0; i < array.size(); i++) {
             String textToAdd = array.get(i).toFile();
             fw.write(textToAdd + "\n");
         }
@@ -108,7 +108,7 @@ public class Duke {
     }
 
     /* method to add new task into the file */
-    public static void writeFile (Task newTask) throws IOException {
+    public static void writeFile(Task newTask) throws IOException {
         FileWriter fw = new FileWriter("data/tasks.txt", true);
         String textToAdd = newTask.toFile();
         fw.write(textToAdd + "\n");
