@@ -1,6 +1,10 @@
 package duke;
 
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Duke {
     public static void main(String[] args) {
@@ -10,34 +14,101 @@ public class Duke {
         String line;
         Scanner in = new Scanner(System.in);
         boolean looper = true;
+        readFile(array);
 
         while(looper) {
             line = in.nextLine();
             String lineCmd = line.trim().split(" ")[0];
-            switch(lineCmd){
-            case "bye":
-                displayByeMsg();
-                looper = false;
-                break;
-            case "list":
-                cmdList(array);
-                break;
-            case "done":
-                cmdDone(array, line);
-                break;
-            case "todo":
-                cmdTodo(array, line);
-                break;
-            case "deadline":
-                cmdDeadline(array, line);
-                break;
-            case "event":
-                cmdEvent(array, line);
-                break;
-            default:
-                System.out.println("Invalid command.");
-            } //end switch statement
+            try {
+                switch(lineCmd){
+                case "bye":
+                    writeWholeFile(array);
+                    displayByeMsg();
+                    looper = false;
+                    break;
+                case "list":
+                    cmdList(array);
+                    break;
+                case "done":
+                    cmdDone(array, line);
+                    break;
+                case "todo":
+                    cmdTodo(array, line);
+                    break;
+                case "deadline":
+                    cmdDeadline(array, line);
+                    break;
+                case "event":
+                    cmdEvent(array, line);
+                    break;
+                default:
+                    System.out.println("Invalid command.");
+                } //end switch statement
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } //end while loop
+    }
+
+    /* method to read from file */
+    public static void readFile(Task[] array) {
+        try {
+            File f = new File("data/tasks.txt");
+            if (!f.exists()){
+                f.getParentFile().mkdir();
+                f.createNewFile();
+            }
+            Scanner inf = new Scanner(f);
+            while (inf.hasNext()) {
+                String linef = inf.nextLine();
+                String[] linefSplit = linef.trim().split(" \\| ", 4);
+                /* linefSplit is split into 4 parts
+                * 0: task type
+                * 1: completion status
+                * 2: contents
+                * 3: conditions
+                * */
+                switch(linefSplit[0]){
+                case "T":
+                    Todo newTodo = new Todo(linefSplit[2]);
+                    newTodo.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array[Task.getNumTask()-1] = newTodo;
+                    break;
+                case "D":
+                    Deadline newDeadline = new Deadline(linefSplit[2], linefSplit[3]);
+                    newDeadline.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array[Task.getNumTask()-1] = newDeadline;
+                    break;
+                case "E":
+                    Event newEvent = new Event(linefSplit[2], linefSplit[3]);
+                    newEvent.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array[Task.getNumTask()-1] = newEvent;
+                    break;
+//                default:
+//                    continue;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* method to overwrite the file with all tasks in the array */
+    public static void writeWholeFile (Task[] array) throws IOException {
+        FileWriter fw = new FileWriter("data/tasks.txt");
+        for (int i=0; i<Task.getNumTask(); i++) {
+            String textToAdd = array[i].toFile();
+            fw.write(textToAdd + "\n");
+        }
+        fw.close();
+    }
+
+    /* method to add new task into the file */
+    public static void writeFile (Task newTask) throws IOException {
+        FileWriter fw = new FileWriter("data/tasks.txt", true);
+            String textToAdd = newTask.toFile();
+            fw.write(textToAdd + "\n");
+        fw.close();
     }
 
     /* method for event command */
@@ -48,6 +119,7 @@ public class Duke {
             String eventAt = line.trim().split("/at ")[1];
             Event newEvent = new Event(eventContent, eventAt);
             array[Task.getNumTask()-1] = newEvent;
+            writeFile(newEvent);
             System.out.println("Got it. I've added this task:");
             System.out.println("\t[E][\u2718] " + eventContent + " (at: " + eventAt + ")");
             System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
@@ -64,6 +136,7 @@ public class Duke {
             String dlBy = line.trim().split("/by ")[1];
             Deadline newDeadline = new Deadline(dlContent, dlBy);
             array[Task.getNumTask()-1] = newDeadline;
+            writeFile(newDeadline);
             System.out.println("Got it. I've added this task:");
             System.out.println("\t[D][\u2718] " + dlContent + " (by: " + dlBy + ")");
             System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
@@ -78,6 +151,7 @@ public class Duke {
             String todoContent = line.trim().substring(5);
             Todo newTodo = new Todo(todoContent);
             array[Task.getNumTask()-1] = newTodo;
+            writeFile(newTodo);
             System.out.println("Got it. I've added this task:");
             System.out.println("\t[T][\u2718] " + todoContent);
             System.out.println("Now you have " + Task.getNumTask() + " tasks in the list.");
