@@ -2,6 +2,10 @@ package duke;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
 
 public class Duke {
 
@@ -13,37 +17,102 @@ public class Duke {
         String line;
         Scanner in = new Scanner(System.in);
         boolean looper = true;
+        readFile();
 
         while (looper) {
             line = in.nextLine();
             String lineCmd = line.trim().split(" ")[0];
-            switch (lineCmd) {
-            case "bye":
-                displayByeMsg();
-                looper = false;
-                break;
-            case "list":
-                cmdList();
-                break;
-            case "done":
-                cmdDone(line);
-                break;
-            case "todo":
-                cmdTodo(line);
-                break;
-            case "deadline":
-                cmdDeadline(line);
-                break;
-            case "event":
-                cmdEvent(line);
-                break;
-            case "delete":
-                cmdDelete(line);
-                break;
-            default:
-                System.out.println("Invalid command.");
-            } //end switch statement
+            try {
+                switch (lineCmd) {
+                case "bye":
+                    writeWholeFile();
+                    displayByeMsg();
+                    looper = false;
+                    break;
+                case "list":
+                    cmdList();
+                    break;
+                case "done":
+                    cmdDone(line);
+                    break;
+                case "todo":
+                    cmdTodo(line);
+                    break;
+                case "deadline":
+                    cmdDeadline(line);
+                    break;
+                case "event":
+                    cmdEvent(line);
+                    break;
+                case "delete":
+                    cmdDelete(line);
+                    break;
+                default:
+                    System.out.println("Invalid command.");
+                } //end switch statement
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } //end while loop
+    }
+
+    /* method to read from file */
+    public static void readFile() {
+        try {
+            File f = new File("data/tasks.txt");
+            if (!f.exists()){
+                f.getParentFile().mkdir();
+                f.createNewFile();
+            }
+            Scanner inf = new Scanner(f);
+            while (inf.hasNext()) {
+                String linef = inf.nextLine();
+                String[] linefSplit = linef.trim().split(" \\| ", 4);
+                /* linefSplit is split into 4 parts
+                 * 0: task type
+                 * 1: completion status
+                 * 2: contents
+                 * 3: conditions
+                 * */
+                switch(linefSplit[0]){
+                case "T":
+                    Todo newTodo = new Todo(linefSplit[2]);
+                    newTodo.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array.add(newTodo);
+                    break;
+                case "D":
+                    Deadline newDeadline = new Deadline(linefSplit[2], linefSplit[3]);
+                    newDeadline.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array.add(newDeadline);
+                    break;
+                case "E":
+                    Event newEvent = new Event(linefSplit[2], linefSplit[3]);
+                    newEvent.isDone = Boolean.parseBoolean(linefSplit[1]);
+                    array.add(newEvent);
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /* method to overwrite the file with all tasks in the array */
+    public static void writeWholeFile () throws IOException {
+        FileWriter fw = new FileWriter("data/tasks.txt");
+        for (int i=0; i<array.size(); i++) {
+            String textToAdd = array.get(i).toFile();
+            fw.write(textToAdd + "\n");
+        }
+        fw.close();
+    }
+
+    /* method to add new task into the file */
+    public static void writeFile (Task newTask) throws IOException {
+        FileWriter fw = new FileWriter("data/tasks.txt", true);
+        String textToAdd = newTask.toFile();
+        fw.write(textToAdd + "\n");
+        fw.close();
     }
 
     /* method for delete command */
@@ -59,6 +128,7 @@ public class Duke {
             } else {
                 String temp = array.get(taskIndex - 1).toString();
                 array.remove(taskIndex - 1);
+                writeWholeFile();
                 System.out.println("Noted. I've removed this task:");
                 System.out.println("\t" + temp);
             }
@@ -75,6 +145,7 @@ public class Duke {
             String eventAt = line.trim().split("/at ")[1];
             Event newEvent = new Event(eventContent, eventAt);
             array.add(newEvent);
+            writeFile(newEvent);
             displayAddMsg(3, eventContent, eventAt);
         } catch (Exception e) {
             System.out.println("Please enter a valid event.");
@@ -89,6 +160,7 @@ public class Duke {
             String dlBy = line.trim().split("/by ")[1];
             Deadline newDeadline = new Deadline(dlContent, dlBy);
             array.add(newDeadline);
+            writeFile(newDeadline);
             displayAddMsg(2, dlContent, dlBy);
         } catch (Exception e) {
             System.out.println("Please enter a valid deadline.");
@@ -101,6 +173,7 @@ public class Duke {
             String todoContent = line.trim().substring(5);
             Todo newTodo = new Todo(todoContent);
             array.add(newTodo);
+            writeFile(newTodo);
             displayAddMsg(1, todoContent, null);
         } catch (Exception e) {
             System.out.println("Please enter a valid task.");

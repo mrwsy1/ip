@@ -3,7 +3,6 @@ package duke;
 public class Task {
     protected String description;
     protected boolean isDone;
-//    protected static int numTask = 0; //track total no. of task
 
     public Task(String description) {
         this.description = description;
@@ -19,15 +18,15 @@ public class Task {
         this.isDone = true;
     }
 
-//    public static int getNumTask() {
-//        return numTask;
-//    }
-
     public String getDescription() {
         return description;
     }
 
     public String toString(){
         return "[" + getStatusIcon() + "] " + getDescription();
+    }
+
+    public String toFile() {
+        return isDone + " | " + getDescription();
     }
 }
