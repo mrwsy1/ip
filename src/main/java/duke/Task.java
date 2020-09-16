@@ -3,12 +3,12 @@ package duke;
 public class Task {
     protected String description;
     protected boolean isDone;
-    protected static int numTask = 0; //track total no. of task
+//    protected static int numTask = 0; //track total no. of task
 
     public Task(String description) {
         this.description = description;
         this.isDone = false;
-        numTask++;
+//        numTask++;
     }
 
     public String getStatusIcon() {
@@ -19,9 +19,9 @@ public class Task {
         this.isDone = true;
     }
 
-    public static int getNumTask() {
-        return numTask;
-    }
+//    public static int getNumTask() {
+//        return numTask;
+//    }
 
     public String getDescription() {
         return description;
