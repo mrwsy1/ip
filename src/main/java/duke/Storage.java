@@ -14,6 +14,11 @@ public class Storage {
         this.directory = directory;
     }
 
+    /**
+     * Reads saved data from file in the specified directory, then fills the ArrayList with the data.
+     * Creates a save file if it does not exist.
+     * @param directory path to saved data
+     */
     public void readFile(String directory) {
         try {
             File f = new File(directory);
@@ -54,7 +59,11 @@ public class Storage {
         }
     }
 
-    /* method to overwrite the file with all tasks in the array */
+    /**
+     * Overwrites old saved data in the file using new data from the ArrayList.
+     * @param array ArrayList containing all tasks
+     * @throws IOException thrown if write fails
+     */
     public void writeWholeFile(ArrayList<Task> array) throws IOException {
         FileWriter fw = new FileWriter(directory);
         for (int i = 0; i < TaskList.getSize(); i++) {
@@ -65,6 +74,12 @@ public class Storage {
     }
 
     /* method to add new task into the file */
+
+    /**
+     * Appends new task to the saved data.
+     * @param newTask contains task data
+     * @throws IOException thrown if write fails
+     */
     public void writeFile(Task newTask) throws IOException {
         FileWriter fw = new FileWriter(directory, true);
         String textToAdd = newTask.toFile();

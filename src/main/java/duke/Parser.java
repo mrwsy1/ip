@@ -6,11 +6,21 @@ public class Parser {
     protected static Scanner in = new Scanner(System.in);
     protected static String line;
 
+    /**
+     * Reads user input.
+     * @return the input from user
+     */
     public static String readCmd() {
         line = in.nextLine();
         return line;
     }
 
+    /**
+     * Determines the action to take based on user input,
+     * and returns a boolean for the while loop condition.
+     * @param line the input from user
+     * @return a boolean
+     */
     public static boolean executeCmd(String line) {
         String lineCmd = line.trim().split(" ")[0];
         try {
