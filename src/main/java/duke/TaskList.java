@@ -20,6 +20,28 @@ public class TaskList {
         return array.size();
     }
 
+    public static void cmdFind(String line) {
+        try {
+            String key = line.trim().substring(5);
+            int matched = 0;
+            for (int i = 0; i < array.size(); i++) {
+                Task temp = array.get(i);
+                if (temp.description.contains(key)) {
+                    matched++;
+                    if (matched == 1) {
+                        System.out.println("Here are the matching tasks in your list:");
+                    }
+                    System.out.println(matched + "." + temp.toString());
+                }
+            }
+            if (matched == 0) {
+                System.out.println("No matching tasks found.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid keyword.");
+        }
+    }
+
     /* method for delete command */
     public static void cmdDelete(String line) {
         try {

@@ -36,6 +36,9 @@ public class Parser {
             case "delete":
                 TaskList.cmdDelete(line);
                 break;
+            case "find":
+                TaskList.cmdFind(line);
+                break;
             default:
                 System.out.println("Invalid command.");
             } //end switch statement
