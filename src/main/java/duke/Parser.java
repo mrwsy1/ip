@@ -24,7 +24,7 @@ public class Parser {
      * @return a boolean
      */
     public static boolean executeCmd(String line) {
-        String lineCmd = line.trim().split(" ")[0];
+        String lineCmd = line.trim().toLowerCase().split(" ")[0];
         try {
             switch (lineCmd) {
             case "bye":
