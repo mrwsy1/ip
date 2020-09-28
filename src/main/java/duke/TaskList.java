@@ -14,6 +14,7 @@ public class TaskList {
 
     /**
      * Adds saved data from file to the ArrayList.
+     *
      * @param savedTask saved data from file
      */
     public static void restoreSaved(Task savedTask) {
@@ -22,6 +23,7 @@ public class TaskList {
 
     /**
      * Finds the number of tasks currently in the ArrayList.
+     *
      * @return size of the ArrayList
      */
     public static int getSize() {
@@ -30,6 +32,7 @@ public class TaskList {
 
     /**
      * Finds all tasks in the ArrayList that contains a keyword.
+     *
      * @param line contains user input
      */
     public static void cmdFind(String line) {
@@ -56,6 +59,7 @@ public class TaskList {
 
     /**
      * Deletes a task from the ArrayList.
+     *
      * @param line contains user input
      */
     public static void cmdDelete(String line) {
@@ -81,6 +85,7 @@ public class TaskList {
 
     /**
      * Adds an event to the ArrayList.
+     *
      * @param line contains user input
      */
     public static void cmdEvent(String line) {
@@ -99,6 +104,7 @@ public class TaskList {
 
     /**
      * Adds a deadline to the ArrayList
+     *
      * @param line contains user input
      */
     public static void cmdDeadline(String line) {
@@ -117,6 +123,7 @@ public class TaskList {
 
     /**
      * Adds a to-do to the ArrayList.
+     *
      * @param line contains user input
      */
     public static void cmdTodo(String line) {
@@ -133,6 +140,7 @@ public class TaskList {
 
     /**
      * Marks a task in the ArrayList as done.
+     *
      * @param line contains user input
      */
     public static void cmdDone(String line) {

@@ -17,6 +17,7 @@ public class Storage {
     /**
      * Reads saved data from file in the specified directory, then fills the ArrayList with the data.
      * Creates a save file if it does not exist.
+     *
      * @param directory path to saved data
      */
     public void readFile(String directory) {
@@ -61,6 +62,7 @@ public class Storage {
 
     /**
      * Overwrites old saved data in the file using new data from the ArrayList.
+     *
      * @param array ArrayList containing all tasks
      * @throws IOException thrown if write fails
      */
@@ -77,6 +79,7 @@ public class Storage {
 
     /**
      * Appends new task to the saved data.
+     *
      * @param newTask contains task data
      * @throws IOException thrown if write fails
      */

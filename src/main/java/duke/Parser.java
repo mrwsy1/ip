@@ -8,6 +8,7 @@ public class Parser {
 
     /**
      * Reads user input.
+     *
      * @return the input from user
      */
     public static String readCmd() {
@@ -18,6 +19,7 @@ public class Parser {
     /**
      * Determines the action to take based on user input,
      * and returns a boolean for the while loop condition.
+     *
      * @param line the input from user
      * @return a boolean
      */
@@ -51,7 +53,7 @@ public class Parser {
                 break;
             default:
                 System.out.println("Invalid command.");
-            } //end switch statement
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

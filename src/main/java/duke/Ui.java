@@ -25,8 +25,9 @@ public class Ui {
 
     /**
      * Prints task added message depending on the type of task
-     * @param taskType specifies the type of task
-     * @param content contains the description of the task
+     *
+     * @param taskType  specifies the type of task
+     * @param content   contains the description of the task
      * @param condition contains a date or time
      */
     public static void displayAddMsg(int taskType, String content, String condition) {
