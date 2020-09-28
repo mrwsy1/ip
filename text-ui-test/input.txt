@@ -1,15 +1,13 @@
 testing
-todo
-todo some task1
-deadline
-deadline some task2
-deadline some task2 /by tuesday
-event
-event some task3
-event some task3 /at sunday night
 list
-done
-done 4
-done 1
+todo testing1
+deadline testing2 /by now
+event testing3 /at later
+list
+find testing1
+find legend of the sky
+delete 6
+delete 5
+delete 4
 list
 bye

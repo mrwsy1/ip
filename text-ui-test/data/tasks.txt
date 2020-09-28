@@ -1,0 +1,3 @@
+T | false | some task1
+D | true | some task2 | tuesday
+E | true | some task3 | sunday night
