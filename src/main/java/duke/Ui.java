@@ -2,7 +2,9 @@ package duke;
 
 public class Ui {
 
-    /* displays DUKE logo and welcome message */
+    /**
+     * Displays the DUKE logo and greeting message.
+     */
     public static void displayWelcomeMsg() {
         String logo = " ____        _\n"
                 + "|  _ \\ _   _| | _____\n"
@@ -14,12 +16,19 @@ public class Ui {
                 "What can I do for you?\n");
     }
 
-    /* displays exit message */
+    /**
+     * Displays the exit message.
+     */
     public static void displayByeMsg() {
         System.out.println("Bye. Hope to see you again soon!");
     }
 
-    /* prints out added task message depending on type of task */
+    /**
+     * Prints task added message depending on the type of task
+     * @param taskType specifies the type of task
+     * @param content contains the description of the task
+     * @param condition contains a date or time
+     */
     public static void displayAddMsg(int taskType, String content, String condition) {
         switch (taskType) {
         case 1:

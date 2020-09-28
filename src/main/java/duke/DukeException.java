@@ -7,7 +7,8 @@ public class DukeException extends Exception {
         this.error = error;
     }
 
-    /* prints out error message according to type of exception
+    /**
+     * Prints out error message according to type of exception.
      * type1: invalid cmd
      * type2: invalid input
      * type3: invalid deadline

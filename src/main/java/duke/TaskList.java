@@ -12,15 +12,26 @@ public class TaskList {
         storage.readFile(directory);
     }
 
+    /**
+     * Adds saved data from file to the ArrayList.
+     * @param savedTask saved data from file
+     */
     public static void restoreSaved(Task savedTask) {
         array.add(savedTask);
     }
 
+    /**
+     * Finds the number of tasks currently in the ArrayList.
+     * @return size of the ArrayList
+     */
     public static int getSize() {
         return array.size();
     }
 
-    /* method for delete command */
+    /**
+     * Deletes a task from the ArrayList.
+     * @param line contains user input
+     */
     public static void cmdDelete(String line) {
         try {
             String taskIndexStr = line.trim().substring(7);
@@ -42,7 +53,10 @@ public class TaskList {
         }
     }
 
-    /* method for event command */
+    /**
+     * Adds an event to the ArrayList.
+     * @param line contains user input
+     */
     public static void cmdEvent(String line) {
         try {
             int atPos = line.indexOf("/at");
@@ -57,7 +71,10 @@ public class TaskList {
         }
     }
 
-    /* method for deadline command */
+    /**
+     * Adds a deadline to the ArrayList
+     * @param line contains user input
+     */
     public static void cmdDeadline(String line) {
         try {
             int byPos = line.indexOf("/by");
@@ -72,7 +89,10 @@ public class TaskList {
         }
     }
 
-    /* method for todo command */
+    /**
+     * Adds a to-do to the ArrayList.
+     * @param line contains user input
+     */
     public static void cmdTodo(String line) {
         try {
             String todoContent = line.trim().substring(5);
@@ -85,7 +105,10 @@ public class TaskList {
         }
     }
 
-    /* method for done command */
+    /**
+     * Marks a task in the ArrayList as done.
+     * @param line contains user input
+     */
     public static void cmdDone(String line) {
         try {
             String taskIndexStr = line.trim().substring(5);
@@ -107,7 +130,9 @@ public class TaskList {
         }
     }
 
-    /* method for list command */
+    /**
+     * Lists out all tasks in the ArrayList.
+     */
     public static void cmdList() {
         if (array.size() == 0) {
             System.out.println("No tasks recorded.");
@@ -117,7 +142,9 @@ public class TaskList {
         }
     }
 
-    /* prints out contents of task array in order */
+    /**
+     * Prints out all tasks in the ArrayList in order.
+     */
     public static void displayList() {
         for (int i = 0; i < array.size(); i++) {
             System.out.println(i + 1 + "." + array.get(i).toString());
