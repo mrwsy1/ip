@@ -6,6 +6,7 @@ event testing3 /at later
 list
 find testing1
 find legend of the sky
+done 6
 delete 6
 delete 5
 delete 4

@@ -32,8 +32,10 @@ Here are the tasks in your list:
 Here are the matching tasks in your list:
 1.[T][✘] testing1
 No matching tasks found.
+Nice! I've marked this task as done:
+	[E][✓] testing3 (at: later)
 Noted. I've removed this task:
-	[E][✘] testing3 (at: later)
+	[E][✓] testing3 (at: later)
 Noted. I've removed this task:
 	[D][✘] testing2 (by: now)
 Noted. I've removed this task:
