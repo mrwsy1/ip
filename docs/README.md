@@ -35,10 +35,10 @@ Duke is a personal Chatbot that helps you manage and keep track of your tasks th
 ### 1. `list` - List all tasks
 Displays an indexed list of all tasks.
 
-#####Example of usage: 
+##### Example of usage: 
 `list`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Here are the tasks in your list:
 1.[T][✘] some task 1
@@ -49,10 +49,10 @@ Here are the tasks in your list:
 ### 2. `todo` - Add new Todo
 Adds a todo task to the list.
 
-#####Example of usage: 
+##### Example of usage: 
 `todo do some coding`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Got it. I've added this task:
 	[T][✘] do some coding
@@ -62,10 +62,10 @@ Now you have 4 tasks in the list.
 ### 3. `deadline` - Add new Deadline
 Adds a deadline to the list. The time can be specified after a `/by` separator.
 
-#####Example of usage: 
+##### Example of usage: 
 `deadline do math homework /by tuesday`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Got it. I've added this task:
 	[D][✘] do math homework (by: tuesday)
@@ -75,10 +75,10 @@ Now you have 5 tasks in the list.
 ### 4. `event` - Add new Event
 Adds an event to the list. The time can be specified after a `/at` separator.
 
-#####Example of usage: 
+##### Example of usage: 
 `event attend zoom lecture /at friday 4pm`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Got it. I've added this task:
 	[E][✘] attend zoom lecture (at: friday 4pm)
@@ -88,10 +88,10 @@ Now you have 6 tasks in the list.
 ### 5. `done` - Mark a task as done
 Marks a task in the list as done, based on the given index.
 
-#####Example of usage: 
+##### Example of usage: 
 `done 1`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Nice! I've marked this task as done:
 	[T][✓] some task 1
@@ -100,10 +100,10 @@ Nice! I've marked this task as done:
 ### 6. `delete` - Delete a task
 Deletes a task from the list, based on the given index.
 
-#####Example of usage: 
+##### Example of usage: 
 `delete 1`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Noted. I've removed this task:
 	[T][✓] some task 1
@@ -112,10 +112,10 @@ Noted. I've removed this task:
 ### 7. `find` - Find tasks based on keyword
 Finds all tasks in the list that contain the given keyword or string.
 
-#####Example of usage: 
+##### Example of usage: 
 `find coding`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Here are the matching tasks in your list:
 1.[T][✘] do some coding
@@ -124,10 +124,10 @@ Here are the matching tasks in your list:
 ### 8. `bye` - Exit program
 Terminates the Command Line Interface.
 
-#####Example of usage: 
+##### Example of usage: 
 `bye`
 
-#####Expected outcome:
+##### Expected outcome:
 ```
 Bye. Hope to see you again soon!
 ```
