@@ -18,14 +18,14 @@ Duke is a personal Chatbot that helps you manage and keep track of your tasks th
 
 1. Ensure you have Java 11 or above installed on your computer.
 
-2. Download the latest version of `CS2113_IP.jar`.
+2. Download the latest version of `Duke.jar`.
 
 3. Copy the file to a folder you want to use as the root directory for Duke.
 
 4. Open a Command Prompt from that folder, and run the following commands:
    ```
    chcp 65001
-   java -Dfile.encoding=UTF-8 -jar CS2113_IP.jar
+   java -Dfile.encoding=UTF-8 -jar Duke.jar
    ```
    
 5. Refer to Features for more details on the available commands and their usage.
