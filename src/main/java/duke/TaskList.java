@@ -156,6 +156,7 @@ public class TaskList {
                 System.out.println("duke.Task is already done.");
             } else {
                 array.get(taskIndex - 1).markAsDone();
+                storage.writeWholeFile(array);
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println("\t" + array.get(taskIndex - 1).toString());
             }
