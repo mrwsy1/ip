@@ -153,7 +153,7 @@ public class TaskList {
                 System.out.println("Please input an index within range (1~"
                         + array.size() + ").");
             } else if (array.get(taskIndex - 1).isDone) {
-                System.out.println("duke.Task is already done.");
+                System.out.println("Task is already done.");
             } else {
                 array.get(taskIndex - 1).markAsDone();
                 storage.writeWholeFile(array);
