@@ -1,5 +1,4 @@
-D | true | hellotest2 | tonight
-E | false | hellotest3 | night
+E | true | hellotest3 | night
 T | false | moretest
 T | false | testafteroop
-D | false | tell me how u feel | tonight
+D | true | tell me how u feel | tonight
